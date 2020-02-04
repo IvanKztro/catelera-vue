@@ -7,14 +7,14 @@
         <div class="form-group">
           <label for="">Pelicula:</label>
           <input type="text" class="form-control" v-model="$store.state.query">
-          <p v-text="$store.state.query" ></p>
+          
         </div>
         
       </form>
 
       <div v-if="Object.keys(searchM).length > 0">
         <div class="row">
-            <div v-for="(movie, index) in searchM.results" :key="index" class="col-3 ">
+            <div v-for="(movie, index) in searchM.results" :key="index" class="col-lg-3 col-md-4 col-12 ">
                 <div class="card mb-4" >
                     <img class="card-img-top img-fluid mx-auto"
                     :src="movie.poster_path" style="height: ;" alt="">

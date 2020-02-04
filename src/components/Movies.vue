@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="row">
-            <div v-for="(movie, index) in movies" :key="index" class="col-3 ">
+            <div v-for="(movie, index) in movies" :key="index" class="col-lg-3 col-md-4 col-12 ">
                 <div class="card mb-4" >
                     <img class="card-img-top img-fluid mx-auto" :src= "movie.poster_path" style="height: ;" alt="">
                 
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import cardMovie from "@/components/CardMovie.vue"
+
 import {mapActions, mapMutations, mapState} from "vuex"
 export default {
     name: "movies",
