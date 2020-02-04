@@ -6,7 +6,11 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: "*",
+    redirect:"/home"
+  },
+  {
+    path: '/home/:page?',
     name: 'home',
     component: Home
   },
