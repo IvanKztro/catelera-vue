@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="" style="background-color: #D5DBDB ">
     <div id="nav">
       <!--<router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>-->
@@ -29,7 +29,10 @@ export default {
     
     //alert(this.page);
     this.getPopularMovies();
-  }
+  },
+  created() {
+  //this.$router.push({ name: 'home'})
+},
 }
 </script>
 
