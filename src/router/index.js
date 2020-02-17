@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Details from '../views/Details.vue'
+import Fav from "../views/Favoritas.vue"
 
 Vue.use(VueRouter)
 
@@ -16,12 +17,17 @@ const routes = [
     component: Home
   },
   {
+    path: "/favoritas",
+    name: "favoritas",
+    component: Fav
+  },
+  {
     path: '/about',
     name: 'about',
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path: "/detalles/:id?",
+    path: "/details/:id?",
     name: "details",
     component: () => import(/* webpackChunkName: "about" */ '../views/Details.vue')
   }

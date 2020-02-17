@@ -4,7 +4,7 @@ const path = require("path");
 
 const app = express();
 
-app.use("/catelera-vue/", serverStatic(path.join(__dirname, '/dist')));
+app.use("/", serverStatic(path.join(__dirname, '/dist')));
 
 //const port = process.env.PORT || 8080
 app.set("port", process.env.PORT || 4000);

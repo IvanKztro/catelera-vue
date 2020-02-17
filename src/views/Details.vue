@@ -1,6 +1,6 @@
 <template>
-    <div>                                                                   
-        <div class="heroMovie text-white py-3" :style="{
+    <div v-if="Object.keys(movieDetails).length > 0">                                                                   
+        <div  class="heroMovie text-white py-3 mt-5 pt-5" :style="{
             'background': 'linear-gradient(to right, rgba(213,245,227,0.45), rgba(59,168,119,1)),url('+movieDetails.backdrop_path+')',
             'background-size': 'cover', 'background-repeat': 'no-repeat',' background-attachment': 'fixed' }"
         >

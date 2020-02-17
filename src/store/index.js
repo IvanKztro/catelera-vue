@@ -10,12 +10,14 @@ const BASEURL = "https://api.themoviedb.org/3/";
 export default new Vuex.Store({
   state: {
     movies: [],
+    moviesFav:[],
+    contMovieFav: 0,
     page: 1,
     total_pages: null,
     pageS: 1,
     total_pagesS: null,
     query: "",
-    movieDetails:[],
+    movieDetails:{},
     APIKEY : "67e32c1cecc6e0d2832701765bea5437",
     BASEURL : "https://api.themoviedb.org/3/",
     searchM:{
@@ -43,10 +45,39 @@ export default new Vuex.Store({
     movieLike(context, indexR){
       context.state.movies.forEach( (element, index) => {
        if(index == indexR){
-        context.state.movies[index].like= !element.like;
+
+
+          context.state.movies[index].like= !element.like;
+          context.state.moviesFav.push({
+          id: element.id,
+          backdrop_path: `https://image.tmdb.org/t/p/w1400_and_h450_face${element.backdrop_path}`,
+          homepage: element.homepage,
+          overview: element.overview,
+          poster_path: element.poster_path,
+          release_date: element.release_date,
+          title: element.title,
+          vote_average: element.vote_average,
+          like: true
+        });
+          localStorage.setItem("movieFav", JSON.stringify(context.state.moviesFav) )
+          context.state.contMovieFav =  context.state.moviesFav.length;
        }
         
       });
+    },
+    deleteFav(context, index){
+      context.state.moviesFav.splice(index,1);
+      context.state.contMovieFav -= 1;
+      localStorage.setItem("movieFav", JSON.stringify(context.state.moviesFav) )
+      
+    },
+    getMoviesFav(context){
+      let moviesF = JSON.parse(localStorage.getItem("movieFav"))
+      if(moviesF != null){
+        context.state.moviesFav= JSON.parse(localStorage.getItem("movieFav"))
+      }
+      context.state.contMovieFav =  context.state.moviesFav.length;
+      
     },
     setPageTotal(context, page){
       context.state.page = page
@@ -117,12 +148,15 @@ export default new Vuex.Store({
       let apiConfig = `?api_key=${APIKEY}`;
       let json = await fetch(`${BASEURL}movie/${router.currentRoute.params.id}${apiConfig}&language=es-MX`)
       let movie = await json.json();
-      console.log(movie);
+     // console.log(movie);
         movie.poster_path = `https://image.tmdb.org/t/p/w185_and_h278_bestv2${movie.poster_path}`;
         movie.backdrop_path = `https://image.tmdb.org/t/p/w1400_and_h450_face${ movie.backdrop_path}`
    
-      console.log(movie);
+      //console.log(movie);
       context.state.movieDetails = movie;
+      console.log(context.state.movieDetails)
+      console.log(  Object.keys(context.state.movieDetails).length  )
+      
     }
 
   },
