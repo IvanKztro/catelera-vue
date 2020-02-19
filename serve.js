@@ -11,5 +11,5 @@ app.use('/',express.static(path.join(__dirname,'/dist')))
 app.set("port", process.env.PORT || 4000);
 
 app.listen(app.get("port"), ()=>{
-   console.log("ESCHUANDO PUERTO: ",  app.get("port"))
+   console.log("ESCHUANDO PUERTO : ",  app.get("port"))
 })
